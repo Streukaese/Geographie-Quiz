@@ -92,8 +92,8 @@ namespace GeographieQuizBenotet
 
         private void Hauptfenster_Load(object sender, EventArgs e)
         {
-            Highscore highscore = new Highscore();
-            highscore.HighscoreLaden();
+            //Highscore highscore = new Highscore();
+            //highscore.HighscoreLaden();
         }
 
         private void buttonHighscoreSpeichern_Click(object sender, EventArgs e)

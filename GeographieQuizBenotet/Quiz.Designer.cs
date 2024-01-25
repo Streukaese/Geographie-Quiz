@@ -42,6 +42,8 @@
             // 
             // pictureBoxQuizBild
             // 
+            this.pictureBoxQuizBild.ErrorImage = null;
+            this.pictureBoxQuizBild.InitialImage = null;
             this.pictureBoxQuizBild.Location = new System.Drawing.Point(156, 28);
             this.pictureBoxQuizBild.Name = "pictureBoxQuizBild";
             this.pictureBoxQuizBild.Size = new System.Drawing.Size(540, 298);
