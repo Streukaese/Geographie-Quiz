@@ -144,7 +144,6 @@
             this.Controls.Add(this.pictureBoxQuizBild);
             this.Name = "Quiz";
             this.Text = "Quiz";
-            this.Load += new System.EventHandler(this.Quiz_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQuizBild)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace GeographieQuizBenotet
-{
+{               // Verweist auf das Objekt welches aus der Datei.csv geladen wird und vergleicht dieses mit dem UserScore
     public class UserScore : IComparable<UserScore>
     {
         
@@ -23,6 +23,7 @@ namespace GeographieQuizBenotet
             Datum = datum;
         }
 
+        // Benötigt wenn 0 verweise??
         public int CompareTo(UserScore other)
         {
             return -Durschnitt.CompareTo(other.Durschnitt);

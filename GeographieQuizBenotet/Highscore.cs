@@ -11,13 +11,11 @@ namespace GeographieQuizBenotet
     public class Highscore
     {
         public List<UserScore> listeHighscores = new List<UserScore>();
-        // sortieren der dgv
-        private CsvOeffnen csvOeffnen;
         // zum aufurfen der Variablen score + durchläufe
         Quiz quiz = new Quiz();
         public Highscore()
         {
-            csvOeffnen = new CsvOeffnen();
+
         }
 
         public void SpielerSpeichern(string playerName, int score, int durchlaeufe)

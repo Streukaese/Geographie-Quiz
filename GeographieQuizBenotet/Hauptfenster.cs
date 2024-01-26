@@ -16,43 +16,36 @@ namespace GeographieQuizBenotet
     {
         private Quiz quizForm;
         Highscore highscore = new Highscore();
-        private CsvOeffnen csvOeffnen = new CsvOeffnen();
         public Hauptfenster()
         {
             InitializeComponent();
             quizForm = new Quiz();
         }
-        // Funktion um quiz in 2.tes Form zu öffnen?
         public void QuizBeginnt()
         {
             if (radioButtonFlagge.Checked || radioButtonHauptstadt.Checked || radioButtonLaender.Checked)
             {
-                //Quiz quiz = new Quiz();
-
                 if (radioButtonFlagge.Checked == true)
                 {
                     quizForm.SpielStarten(0);
-                    //pruefeAntwortEvent_Click(sender, e);
                 }
                 else if (radioButtonHauptstadt.Checked == true)
                 {
                     quizForm.SpielStarten(1);
                 }
-                else if (radioButtonLaender.Checked == true)    // && textBoxLoginName.TextLength <= 0
+                else if (radioButtonLaender.Checked == true)
                 {
                     quizForm.SpielStarten(2);
                 }
-                // Muss auskommentiert werden -> Fehler
-                //quizForm.ShowDialog();
             }
             else
             {
                 MessageBox.Show("Bitte wählen Sie eine Kategorie aus", "Hinweis", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        int qnum = 0;
         private void buttonAuswahlSpielen_Click(object sender, EventArgs e)
         {
+            quizForm.durchlaeufe++;
             string playerName = textBoxLoginName.Text;
 
             if (playerName.Length == 0)
@@ -66,7 +59,6 @@ namespace GeographieQuizBenotet
                 QuizBeginnt();
             }
         }
-
         private void textBoxLoginName_Click(object sender, EventArgs e)
         {
             textBoxLoginName.Text = "";
@@ -75,30 +67,10 @@ namespace GeographieQuizBenotet
         {
             textBoxLoginPasswort.Text = "";
         }
-
         private void Hauptfenster_Load(object sender, EventArgs e)
         {
             dataGridViewHighscore.DataSource = new BindingList<UserScore>(highscore.HighscoreLaden());
-
-            //// Setze den Spaltennamen und die Sortierreihenfolge
-            //string columnName = "Durschnitt"; // Der Name der Spalte, nach der sortiert werden soll
-            //ListSortDirection sortDirection = ListSortDirection.Ascending; // Sortierreihenfolge
-
-
-            //// Überprüfe, ob die angegebene Spalte existiert
-            //if (dataGridViewHighscore.Columns.Contains(columnName))
-            //{
-            //    // Sortiere die DataGridView
-            //    dataGridViewHighscore.Sort(dataGridViewHighscore.Columns[columnName], sortDirection);
-            //}
-            //else
-            //{
-            //    // Warn Meldung
-            //    MessageBox.Show("Spalte nicht gefunden: " + columnName);
-            //}
-            //dataGridViewHighscore.DataSource = new BindingList <UserScore>(highscore.listeHighscores);
         }
-
         private void buttonHighscoreSpeichern_Click(object sender, EventArgs e)
         {
             int score = quizForm.score;

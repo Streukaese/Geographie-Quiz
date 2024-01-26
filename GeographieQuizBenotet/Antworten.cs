@@ -27,22 +27,7 @@ namespace GeographieQuizBenotet
                     auswahl.Add(l);
                 }
             }
-
-            // Füge die richtige Antwort hinzu
-            //auswahl.Add(l);
-
             return auswahl;
-            // Mische die Reihenfolge der Antworten
-            //return auswahl.OrderBy(item => zufallsquelle.Next()).ToList();
         }
-
-        //public List<Land> GeneriereNaechsteFrage()
-        //{
-        //    AntwortGenerator antwortGenerator = new AntwortGenerator(CsvOeffnen.laenderFragen);
-        //    List<Land> auswahl = antwortGenerator.GeneriereAntworten();
-
-
-        //    return auswahl;
-        //}
     }
 }
