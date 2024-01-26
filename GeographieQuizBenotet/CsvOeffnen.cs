@@ -11,6 +11,7 @@ namespace GeographieQuizBenotet
     public class CsvOeffnen
     {
         public static List<Land> laenderFragen = new List<Land>();
+        private List<UserScore> highscores;
         public static void CsvLesen()
         {
             try
@@ -36,6 +37,20 @@ namespace GeographieQuizBenotet
             {
                 MessageBox.Show("Ein Fehler ist aufgetreten: " + ex.Message);
             }
+        }
+        // Diese Methode sortiert die Highscores nach dem Durschnitt
+        public List<UserScore> SortiereHighscoresNachDurschnitt()
+        {
+            // Annahme: Die Klasse UserScore hat eine Eigenschaft "Durschnitt"
+            highscores = highscores.OrderByDescending(score => score.Durschnitt).ToList();
+            return highscores;
+        }
+        public List<UserScore> SortierteHighscoresNachDurschnitt()
+        {
+            // Lade und sortiere die Highscores
+            List<UserScore> highscores = SortiereHighscoresNachDurschnitt();
+
+            return highscores;
         }
     }
 }

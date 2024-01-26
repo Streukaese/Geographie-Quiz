@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace GeographieQuizBenotet
 {
-    public class UserScore
+    public class UserScore : IComparable<UserScore>
     {
         
         public string Name { get; }
-        public int Score { get; }
-        public int Durchlaeufe { get; }
-        public double Durschnitt { get; }
-        public DateTime Datum { get; }
+        public int Score { get; set; }
+        public int Durchlaeufe { get; set; }
+        public double Durschnitt { get; set; }
+        public DateTime Datum { get; set; }
         public UserScore(string name, int score, int durchlaeufe, double durschnitt, DateTime datum)
         {
             Name = name;
@@ -21,6 +21,11 @@ namespace GeographieQuizBenotet
             Durchlaeufe = durchlaeufe;
             Durschnitt = durschnitt;
             Datum = datum;
+        }
+
+        public int CompareTo(UserScore other)
+        {
+            return -Durschnitt.CompareTo(other.Durschnitt);
         }
     }
 }

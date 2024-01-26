@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labelLogin = new System.Windows.Forms.Label();
             this.textBoxLoginName = new System.Windows.Forms.TextBox();
             this.textBoxLoginPasswort = new System.Windows.Forms.TextBox();
@@ -36,13 +37,16 @@
             this.radioButtonLaender = new System.Windows.Forms.RadioButton();
             this.buttonHighscoreSpeichern = new System.Windows.Forms.Button();
             this.buttonAuswahlSpielen = new System.Windows.Forms.Button();
-            this.listBoxHighscore = new System.Windows.Forms.ListBox();
+            this.dataGridViewHighscore = new System.Windows.Forms.DataGridView();
+            this.highscoreBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHighscore)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.highscoreBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // labelLogin
             // 
             this.labelLogin.AutoSize = true;
-            this.labelLogin.Location = new System.Drawing.Point(12, 8);
+            this.labelLogin.Location = new System.Drawing.Point(33, 8);
             this.labelLogin.Name = "labelLogin";
             this.labelLogin.Size = new System.Drawing.Size(43, 16);
             this.labelLogin.TabIndex = 0;
@@ -50,7 +54,7 @@
             // 
             // textBoxLoginName
             // 
-            this.textBoxLoginName.Location = new System.Drawing.Point(12, 27);
+            this.textBoxLoginName.Location = new System.Drawing.Point(33, 27);
             this.textBoxLoginName.Name = "textBoxLoginName";
             this.textBoxLoginName.Size = new System.Drawing.Size(147, 22);
             this.textBoxLoginName.TabIndex = 1;
@@ -60,7 +64,7 @@
             // 
             // textBoxLoginPasswort
             // 
-            this.textBoxLoginPasswort.Location = new System.Drawing.Point(12, 55);
+            this.textBoxLoginPasswort.Location = new System.Drawing.Point(33, 55);
             this.textBoxLoginPasswort.Name = "textBoxLoginPasswort";
             this.textBoxLoginPasswort.Size = new System.Drawing.Size(147, 22);
             this.textBoxLoginPasswort.TabIndex = 2;
@@ -71,7 +75,7 @@
             // radioButtonFlagge
             // 
             this.radioButtonFlagge.AutoSize = true;
-            this.radioButtonFlagge.Location = new System.Drawing.Point(399, 27);
+            this.radioButtonFlagge.Location = new System.Drawing.Point(440, 27);
             this.radioButtonFlagge.Name = "radioButtonFlagge";
             this.radioButtonFlagge.Size = new System.Drawing.Size(185, 20);
             this.radioButtonFlagge.TabIndex = 3;
@@ -82,7 +86,7 @@
             // radioButtonHauptstadt
             // 
             this.radioButtonHauptstadt.AutoSize = true;
-            this.radioButtonHauptstadt.Location = new System.Drawing.Point(399, 82);
+            this.radioButtonHauptstadt.Location = new System.Drawing.Point(440, 83);
             this.radioButtonHauptstadt.Name = "radioButtonHauptstadt";
             this.radioButtonHauptstadt.Size = new System.Drawing.Size(200, 20);
             this.radioButtonHauptstadt.TabIndex = 4;
@@ -93,7 +97,7 @@
             // radioButtonLaender
             // 
             this.radioButtonLaender.AutoSize = true;
-            this.radioButtonLaender.Location = new System.Drawing.Point(399, 132);
+            this.radioButtonLaender.Location = new System.Drawing.Point(440, 138);
             this.radioButtonLaender.Name = "radioButtonLaender";
             this.radioButtonLaender.Size = new System.Drawing.Size(177, 20);
             this.radioButtonLaender.TabIndex = 5;
@@ -103,7 +107,7 @@
             // 
             // buttonHighscoreSpeichern
             // 
-            this.buttonHighscoreSpeichern.Location = new System.Drawing.Point(199, 27);
+            this.buttonHighscoreSpeichern.Location = new System.Drawing.Point(250, 17);
             this.buttonHighscoreSpeichern.Name = "buttonHighscoreSpeichern";
             this.buttonHighscoreSpeichern.Size = new System.Drawing.Size(149, 43);
             this.buttonHighscoreSpeichern.TabIndex = 6;
@@ -113,7 +117,7 @@
             // 
             // buttonAuswahlSpielen
             // 
-            this.buttonAuswahlSpielen.Location = new System.Drawing.Point(417, 171);
+            this.buttonAuswahlSpielen.Location = new System.Drawing.Point(468, 202);
             this.buttonAuswahlSpielen.Name = "buttonAuswahlSpielen";
             this.buttonAuswahlSpielen.Size = new System.Drawing.Size(149, 52);
             this.buttonAuswahlSpielen.TabIndex = 7;
@@ -121,34 +125,29 @@
             this.buttonAuswahlSpielen.UseVisualStyleBackColor = true;
             this.buttonAuswahlSpielen.Click += new System.EventHandler(this.buttonAuswahlSpielen_Click);
             // 
-            // listBoxHighscore
+            // dataGridViewHighscore
             // 
-            this.listBoxHighscore.FormattingEnabled = true;
-            this.listBoxHighscore.HorizontalScrollbar = true;
-            this.listBoxHighscore.ItemHeight = 16;
-            this.listBoxHighscore.Items.AddRange(new object[] {
-            "asasdf",
-            "asdcfadsf",
-            "asdf",
-            "sdgsad",
-            "dsg",
-            "sdg",
-            "sdg",
-            "sdg",
-            "s",
-            "gsf",
-            "fg"});
-            this.listBoxHighscore.Location = new System.Drawing.Point(12, 110);
-            this.listBoxHighscore.Name = "listBoxHighscore";
-            this.listBoxHighscore.Size = new System.Drawing.Size(336, 100);
-            this.listBoxHighscore.TabIndex = 8;
+            this.dataGridViewHighscore.AllowUserToAddRows = false;
+            this.dataGridViewHighscore.AllowUserToDeleteRows = false;
+            this.dataGridViewHighscore.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewHighscore.Location = new System.Drawing.Point(15, 83);
+            this.dataGridViewHighscore.Name = "dataGridViewHighscore";
+            this.dataGridViewHighscore.ReadOnly = true;
+            this.dataGridViewHighscore.RowHeadersWidth = 51;
+            this.dataGridViewHighscore.RowTemplate.Height = 24;
+            this.dataGridViewHighscore.Size = new System.Drawing.Size(384, 187);
+            this.dataGridViewHighscore.TabIndex = 9;
+            // 
+            // highscoreBindingSource
+            // 
+            this.highscoreBindingSource.DataSource = typeof(GeographieQuizBenotet.Highscore);
             // 
             // Hauptfenster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(617, 235);
-            this.Controls.Add(this.listBoxHighscore);
+            this.ClientSize = new System.Drawing.Size(652, 282);
+            this.Controls.Add(this.dataGridViewHighscore);
             this.Controls.Add(this.buttonAuswahlSpielen);
             this.Controls.Add(this.buttonHighscoreSpeichern);
             this.Controls.Add(this.radioButtonLaender);
@@ -160,6 +159,8 @@
             this.Name = "Hauptfenster";
             this.Text = "Login - Quiz Auswahl";
             this.Load += new System.EventHandler(this.Hauptfenster_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHighscore)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.highscoreBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,7 +176,8 @@
         private System.Windows.Forms.RadioButton radioButtonLaender;
         private System.Windows.Forms.Button buttonHighscoreSpeichern;
         private System.Windows.Forms.Button buttonAuswahlSpielen;
-        private System.Windows.Forms.ListBox listBoxHighscore;
+        private System.Windows.Forms.DataGridView dataGridViewHighscore;
+        private System.Windows.Forms.BindingSource highscoreBindingSource;
     }
 }
 

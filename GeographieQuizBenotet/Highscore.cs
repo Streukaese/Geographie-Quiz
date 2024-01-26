@@ -8,35 +8,61 @@ using System.Windows.Forms;
 
 namespace GeographieQuizBenotet
 {
-    internal class Highscore
+    public class Highscore
     {
-        public static List<UserScore> listeHighscores = new List<UserScore>();
+        public List<UserScore> listeHighscores = new List<UserScore>();
+        // sortieren der dgv
+        private CsvOeffnen csvOeffnen;
         // zum aufurfen der Variablen score + durchläufe
         Quiz quiz = new Quiz();
         public Highscore()
         {
-
+            csvOeffnen = new CsvOeffnen();
         }
 
-        public void HighscoreLaden()
+        public void SpielerSpeichern(string playerName, int score, int durchlaeufe)
         {
-            // TODO - SteamReader zum SteamWriter ändern
+            double durschnitt = score / durchlaeufe;
+                                    // Lamda
+            if(!listeHighscores.Any(p => p.Name == playerName))
+            {
+                UserScore newHighscoreEntry = new UserScore(playerName, score, durchlaeufe, durschnitt, DateTime.Now);  // Beispiel für fünf Werte
+                listeHighscores.Add(newHighscoreEntry);
+            }
+            else
+            {                                                   // Lamda
+                UserScore savedUserScore = listeHighscores.Find(p => p.Name == playerName);
+                savedUserScore.Score = score;
+                savedUserScore.Durchlaeufe = durchlaeufe;
+                savedUserScore.Durschnitt = durschnitt;
+                savedUserScore.Datum = DateTime.Now;
+            }
+        }
+        public List<UserScore> HighscoreLaden()
+        {
             try
             {
                 StreamReader reader = new StreamReader(new FileStream("Highscore.csv", FileMode.Open, FileAccess.Read), new UTF8Encoding());
+                // Zum Überspringen des Header -> csv
+                reader.ReadLine();
                 while (!reader.EndOfStream)
                 {
                     string zeile = reader.ReadLine();
-                    // Etwas mit der Zeile machen (Split(';');
-                    String[] teile = zeile.Split(';');
+                    string[] teile = zeile.Split(';');
                     string name = teile[0];
                     int score = Int32.Parse(teile[1]);
-                    int durchläufe = int.Parse(teile[2]);
+                    int durchläufe = Int32.Parse(teile[2]);
                     double durschnitt = Double.Parse(teile[3]);
                     DateTime datum = DateTime.Parse(teile[4]);
                     
                     UserScore uS = new UserScore(name, score, durchläufe, durschnitt, datum);
                     listeHighscores.Add(uS);
+
+                    listeHighscores.Sort();
+                    while(listeHighscores.Count > 10)
+                    {
+                        listeHighscores.RemoveAt(listeHighscores.Count-1);
+                    }
                 }
                 reader.Close();
             }
@@ -44,65 +70,28 @@ namespace GeographieQuizBenotet
             {
                 MessageBox.Show("Ein Fehler ist aufgetreten: " + ex.Message);
             }
+
+            return listeHighscores;
         }
-        public String ZuCsvSchreiben()        // String oder Void
-        {
-            string name = "";
-            int score = 0;
-            int durchlaeufe = 0;
-            double durschnitt = 0;
-            DateTime datum = DateTime.Now;
-            UserScore u = new UserScore(name, score, durchlaeufe, durschnitt, datum);
-            name = u.Name;
-            score = u.Score;
-            durchlaeufe = u.Durchlaeufe;
-            durschnitt = u.Durschnitt;
-            datum = u.Datum;
-            return $"{name}, {score}, {durchlaeufe}, {durschnitt}, {datum}";
-        }
+
         public void HighscoreSpeichern()
         {
-            //// TODO - SteamReader zum SteamWriter ändern
-            //try
-            //{
-            //    StreamWriter writer = new StreamWriter(new FileStream("Highscore.csv", FileMode.Open, FileAccess.Write), new UTF8Encoding());
-            //    while(writer.)
-            //    {
-
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Ein Fehler ist aufgetreten: " + ex.Message);
-            //}
-
-
-            //// TODO - SteamReader zum SteamWriter ändern
-            //try
-            //{
-            //    StreamReader reader = new StreamReader(new FileStream("Highscore.csv", FileMode.Open, FileAccess.Read), new UTF8Encoding());
-            //    while (!reader.EndOfStream)
-            //    {
-            //        string zeile = reader.ReadLine();
-            //        // Etwas mit der Zeile machen (Split(';');
-            //        String[] teile = zeile.Split(';');
-            //        string name = teile[0];
-            //          // TODO - score aus quiz übernehmen
-            //        int score = Int32.Parse(teile[1]);
-            //          // TODO - durchläufe aus quiz übernehmen
-            //        int durchläufe = int.Parse(teile[2]);
-            //        double durschnitt = Double.Parse(teile[3]);
-            //        DateTime datum = DateTime.Parse(teile[4]);
-
-            //        UserScore uS = new UserScore(name, score, durchläufe, durschnitt, datum);
-            //        listeHighscores.Add(uS);
-            //    }
-            //    reader.Close();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Ein Fehler ist aufgetreten: " + ex.Message);
-            //}
+                                                        // Lamda
+            listeHighscores = listeHighscores.OrderBy(userScore =>  userScore.Durschnitt).ToList();
+            try
+            {
+                StreamWriter writer = new StreamWriter(new FileStream("Highscore.csv", FileMode.Open, FileAccess.Write), new UTF8Encoding());
+                writer.WriteLine("Name;Score;Durchläufe;Durschnitt;Datum");
+                foreach (var item in listeHighscores)
+                {                       // string literal
+                    writer.WriteLine($"{item.Name};{item.Score};{item.Durchlaeufe};{item.Durschnitt};{item.Datum}");
+                }
+                writer.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ein Fehler ist aufgetreten: " + ex.Message);
+            }
         }
     }
 }
