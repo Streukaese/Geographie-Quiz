@@ -63,10 +63,6 @@ namespace GeographieQuizBenotet
         {
             textBoxLoginName.Text = "";
         }
-        private void textBoxLoginPasswort_Click(object sender, EventArgs e)
-        {
-            textBoxLoginPasswort.Text = "";
-        }
         private void Hauptfenster_Load(object sender, EventArgs e)
         {
             dataGridViewHighscore.DataSource = new BindingList<UserScore>(highscore.HighscoreLaden());

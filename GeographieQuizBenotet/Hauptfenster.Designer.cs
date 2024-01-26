@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.labelLogin = new System.Windows.Forms.Label();
             this.textBoxLoginName = new System.Windows.Forms.TextBox();
-            this.textBoxLoginPasswort = new System.Windows.Forms.TextBox();
             this.radioButtonFlagge = new System.Windows.Forms.RadioButton();
             this.radioButtonHauptstadt = new System.Windows.Forms.RadioButton();
             this.radioButtonLaender = new System.Windows.Forms.RadioButton();
@@ -46,36 +45,25 @@
             // labelLogin
             // 
             this.labelLogin.AutoSize = true;
-            this.labelLogin.Location = new System.Drawing.Point(33, 8);
+            this.labelLogin.Location = new System.Drawing.Point(12, 9);
             this.labelLogin.Name = "labelLogin";
-            this.labelLogin.Size = new System.Drawing.Size(43, 16);
+            this.labelLogin.Size = new System.Drawing.Size(87, 16);
             this.labelLogin.TabIndex = 0;
-            this.labelLogin.Text = "Login:";
+            this.labelLogin.Text = "Spielername:";
             // 
             // textBoxLoginName
             // 
-            this.textBoxLoginName.Location = new System.Drawing.Point(33, 27);
+            this.textBoxLoginName.Location = new System.Drawing.Point(12, 28);
             this.textBoxLoginName.Name = "textBoxLoginName";
             this.textBoxLoginName.Size = new System.Drawing.Size(147, 22);
             this.textBoxLoginName.TabIndex = 1;
-            this.textBoxLoginName.Text = "\"Name eingeben\"";
             this.textBoxLoginName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxLoginName.Click += new System.EventHandler(this.textBoxLoginName_Click);
-            // 
-            // textBoxLoginPasswort
-            // 
-            this.textBoxLoginPasswort.Location = new System.Drawing.Point(33, 55);
-            this.textBoxLoginPasswort.Name = "textBoxLoginPasswort";
-            this.textBoxLoginPasswort.Size = new System.Drawing.Size(147, 22);
-            this.textBoxLoginPasswort.TabIndex = 2;
-            this.textBoxLoginPasswort.Text = "\"Passwort eingeben\"";
-            this.textBoxLoginPasswort.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxLoginPasswort.Click += new System.EventHandler(this.textBoxLoginPasswort_Click);
             // 
             // radioButtonFlagge
             // 
             this.radioButtonFlagge.AutoSize = true;
-            this.radioButtonFlagge.Location = new System.Drawing.Point(440, 27);
+            this.radioButtonFlagge.Location = new System.Drawing.Point(575, 12);
             this.radioButtonFlagge.Name = "radioButtonFlagge";
             this.radioButtonFlagge.Size = new System.Drawing.Size(185, 20);
             this.radioButtonFlagge.TabIndex = 3;
@@ -86,7 +74,7 @@
             // radioButtonHauptstadt
             // 
             this.radioButtonHauptstadt.AutoSize = true;
-            this.radioButtonHauptstadt.Location = new System.Drawing.Point(440, 83);
+            this.radioButtonHauptstadt.Location = new System.Drawing.Point(575, 68);
             this.radioButtonHauptstadt.Name = "radioButtonHauptstadt";
             this.radioButtonHauptstadt.Size = new System.Drawing.Size(200, 20);
             this.radioButtonHauptstadt.TabIndex = 4;
@@ -97,7 +85,7 @@
             // radioButtonLaender
             // 
             this.radioButtonLaender.AutoSize = true;
-            this.radioButtonLaender.Location = new System.Drawing.Point(440, 138);
+            this.radioButtonLaender.Location = new System.Drawing.Point(575, 123);
             this.radioButtonLaender.Name = "radioButtonLaender";
             this.radioButtonLaender.Size = new System.Drawing.Size(177, 20);
             this.radioButtonLaender.TabIndex = 5;
@@ -117,7 +105,7 @@
             // 
             // buttonAuswahlSpielen
             // 
-            this.buttonAuswahlSpielen.Location = new System.Drawing.Point(468, 202);
+            this.buttonAuswahlSpielen.Location = new System.Drawing.Point(603, 187);
             this.buttonAuswahlSpielen.Name = "buttonAuswahlSpielen";
             this.buttonAuswahlSpielen.Size = new System.Drawing.Size(149, 52);
             this.buttonAuswahlSpielen.TabIndex = 7;
@@ -135,7 +123,7 @@
             this.dataGridViewHighscore.ReadOnly = true;
             this.dataGridViewHighscore.RowHeadersWidth = 51;
             this.dataGridViewHighscore.RowTemplate.Height = 24;
-            this.dataGridViewHighscore.Size = new System.Drawing.Size(384, 187);
+            this.dataGridViewHighscore.Size = new System.Drawing.Size(536, 187);
             this.dataGridViewHighscore.TabIndex = 9;
             // 
             // highscoreBindingSource
@@ -146,14 +134,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(652, 282);
+            this.ClientSize = new System.Drawing.Size(787, 282);
             this.Controls.Add(this.dataGridViewHighscore);
             this.Controls.Add(this.buttonAuswahlSpielen);
             this.Controls.Add(this.buttonHighscoreSpeichern);
             this.Controls.Add(this.radioButtonLaender);
             this.Controls.Add(this.radioButtonHauptstadt);
             this.Controls.Add(this.radioButtonFlagge);
-            this.Controls.Add(this.textBoxLoginPasswort);
             this.Controls.Add(this.textBoxLoginName);
             this.Controls.Add(this.labelLogin);
             this.Name = "Hauptfenster";
@@ -170,7 +157,6 @@
 
         private System.Windows.Forms.Label labelLogin;
         private System.Windows.Forms.TextBox textBoxLoginName;
-        private System.Windows.Forms.TextBox textBoxLoginPasswort;
         private System.Windows.Forms.RadioButton radioButtonFlagge;
         private System.Windows.Forms.RadioButton radioButtonHauptstadt;
         private System.Windows.Forms.RadioButton radioButtonLaender;
