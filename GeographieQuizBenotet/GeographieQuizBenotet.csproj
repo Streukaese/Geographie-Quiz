@@ -80,7 +80,6 @@
     <EmbeddedResource Include="Quiz.resx">
       <DependentUpon>Quiz.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Properties\DataSources\Highscore.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

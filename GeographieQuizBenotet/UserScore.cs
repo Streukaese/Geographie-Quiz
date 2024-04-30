@@ -23,7 +23,7 @@ namespace GeographieQuizBenotet
             Datum = datum;
         }
 
-        // Benötigt wenn 0 verweise??
+        // Benötigt weil Vereerbung
         public int CompareTo(UserScore other)
         {
             return -Durschnitt.CompareTo(other.Durschnitt);
