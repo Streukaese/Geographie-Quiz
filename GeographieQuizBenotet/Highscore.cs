@@ -11,7 +11,7 @@ namespace GeographieQuizBenotet
     public class Highscore
     {
         public List<UserScore> listeHighscores = new List<UserScore>();
-        // zum aufurfen der Variablen score + durchläufe
+        // zum aufrufen der Variablen score + durchläufe
         Quiz quiz = new Quiz();
         public Highscore()
         {
